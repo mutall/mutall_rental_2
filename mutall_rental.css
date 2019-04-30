@@ -1,0 +1,71 @@
+/*
+Do not display the labels*/
+label.normal {
+    display:none;
+}
+
+/*
+Size the images*/
+img 
+{
+    width:150px; height:150px;
+}
+
+header
+{
+    height:15%;
+    background-color: yellow;
+    display:flex
+}
+
+footer
+{
+    height:0%;
+    background-color: greenyellow;
+}
+
+article
+{
+    height:85%;
+    width:80%;
+    background-color:powderblue;
+    overflow:scroll; 
+}
+
+
+nav
+{
+    height:85%;
+    width:20%;
+    background-color:bisque;
+    float: left;
+}
+
+
+record{
+    display: block;
+    width:100%
+}
+
+records{
+    display: block;
+}
+
+/*
+Rotate the staff picures by 90deg anti-clockwise*/
+#pic{
+    transform:rotate(-90deg);
+}
+
+caption_{
+    display:block;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size:x-large;
+}
+
+tagline{
+    font-size:small;
+    
+}

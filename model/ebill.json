@@ -1,0 +1,90 @@
+{
+    "electricity": [
+        {
+            "fname": "accno",
+            "storage": {
+                "entity": "eacount",
+                "attribute": "num"
+            },
+            "delimiters": [
+                {
+                    "left": {
+                        "text": "ACCOUNT NO:",
+                        "score": null
+                    },
+                    "right": {
+                        "text": ". Curr bill",
+                        "score": null
+                    }
+                }, 
+                {
+                    "left": {
+                        "text": "ACCOUNT: ",
+                        "score": null
+                    },
+                    "right": {
+                        "text": "NAME",
+                        "score": null
+                    }
+                }
+            ]
+        },
+        {
+            "fname": "date",
+            "storage":{
+                "entity": "ebill",
+                "attribute": "due_date"
+            },
+            "delimiters": [
+                {
+                    "left": {
+                        "text": "Curr bill dated",
+                        "score": null
+                    },
+                    "right": {
+                        "text": "is",
+                        "score": null
+                    }
+                }, 
+                {
+                    "left": {
+                        "text": "Due on : ",
+                        "score": null
+                    },
+                    "right": {
+                        "text": "Thank",
+                        "score": null
+                    }
+                }
+            ]
+        },
+        {
+            "fname": "current_amount",
+            "storage": {
+                "entity": "ebill",
+                "attribute": "current_amount"
+            },
+            "delimiters": [
+                {
+                    "left": {
+                        "text": "Outstanding is KShs:",
+                        "score": null
+                    },
+                    "right": {
+                        "text": ". Due",
+                        "score": null
+                    }
+                }, {
+                    "left": {
+                        "text": "AMOUNT: ",
+                        "score": null
+                    },
+                    "right": {
+                        "text": "Due",
+                        "score": null
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,131 @@
+<records>
+    <record id="id">
+        <caption_>
+            Identity
+        </caption_> 
+        <tagline>
+            
+        </tagline>
+        
+    </record>
+
+    <record id="mission">
+        <caption_>
+            Mission
+        </caption_>
+        <tagline>
+        </tagline>
+    </record>
+    <record id="vision">    
+        <caption_>
+            Vision
+        </caption_> 
+        <tagline>
+        </tagline>
+    </record>
+    <record id="values">
+        <caption_>
+            Values
+        </caption_>
+        <tagline>
+        </tagline>
+    </record>
+
+    
+    <record id="services">
+        <caption_>
+            Services
+        </caption_>
+        <tagline>
+            These services are developed to help Mutall Rental and run
+            it's business  smoothly.
+            To access a service you must be a registered member of the adminstration. 
+        </tagline>
+        
+        <service id="service_client">
+            <h3>View the KPLC Data</h3>
+            <tagline>
+                <a class='option' href='ebill_lovinah.php'>View E-bills</a>
+                <a class='option' href='ebill_Gloria.php'>View E-bills Shared</a>
+                <a class='option' href='eaccount.php'>View E-accounts</a>
+                <a class='option' href='msg.php'>View Requests from 95551 and Bills from KPLC</a>
+            </tagline>
+        </service>
+        
+        <service id="service_water">
+            <h3>Water Readings</h3>
+            <a class="option" href="wreading.php?dbname=mutallco_rental">
+                Monitor Daily Water Consumption</a>
+            <a class="option" href="wreading_record.php?dbname=mutallco_rental">
+                Add New Water Readings
+            </a>
+            <a class="option" href="wcharge.php?dbname=mutallco_rental">
+                Calculate Current Water Charges
+            </a>     
+        </service>
+                <service id="service_payment">
+            <h3>Payment Management</h3>
+            <a class="option" href="payment.php?dbname=mutallco_rental&amp;tname=payment">
+                Enter Payments</a>
+            <a class="option" href="balance_initial.php?dbname=mutallco_rental&amp;tname=balance_initial">
+                Enter Balance
+            </a>
+            <a class="option" href="adjustment.php?dbname=mutallco_rental&amp;tname=adjustment">
+                Enter Adjustements
+            </a>
+           
+        </service>
+
+        <service id="service_statements">
+            <h3>Client Invoices/Statements</h3>
+            
+            We have developed a system that is automated on a monthly 
+            bases to support the invocing of clients and production of detailed statemnts .
+                
+            Example from <a href='http://localhost/services/invoices.php?tname=invoice&amp;dbname=mutallco_eureka_waters'>Eureka Waters by Brian</a>
+        </service>
+
+        <!--service id="service_">
+            <h3></h3>
+            Example from <a href=''></a>
+        </service-->
+
+
+    </record>
+
+    <record id="clients">
+        <caption_>
+            Clients
+        </caption_>
+        <tagline>
+        
+        </tagline>    
+
+    </record>
+    
+    
+    <record id="staff">     
+        <caption_>
+            Staff
+        </caption_>
+        <tagline>
+        </tagline>
+
+    </record>
+     
+    
+    <record id="contacts">
+        <caption_>
+            Contacts
+        </caption_>
+        <tagline>We are located in a small growing town in Kajiado and
+            hence there comes the interest to develop small businesses.
+            The town is in the heart of Kajiado, a junction between major
+            towns, giving all a meeting point for business, family outings and other activities
+        </tagline>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6707.955598854458!2d36.6884214645245!3d-1.430845091021402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f0131c033b1ef%3A0x569be8715ba7ec81!2sMutall+Business+Centre!5e0!3m2!1ssw!2ske!4v1529315656375" width="600" height="450" frameborder="0" style="border:0" allowfullscreen='true'></iframe>
+    
+    </record>
+    
+    
+</records>

@@ -1,0 +1,1 @@
+select * from eaccount where not(null);
