@@ -21,7 +21,7 @@ $wreading= new wreading();
 
         <!-- Script for referencing the prototypes for objects needed for 
         interacting with this page -->
-        <script id='mutalljs' src="../library/mutall.js"></script>
+        <script id='mutalljs' src="../library/library.js"></script>
 
         <script id='wreading' src="mutall_rental.js"></script>
 

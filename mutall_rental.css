@@ -1,3 +1,339 @@
+/*New styling for mutall rental website*/
+/*
+Do not display the labels*/
+label.normal {
+    display:none;
+}
+/*
+Size the images*/
+img 
+{
+    width: 200px; 
+    height: 100px;
+    
+}
+/*Style the header section*/
+header
+{
+    height: 30%;
+    width: 100%;
+    background-color: aliceblue;
+    display: flex;
+}
+header_items
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+/*Style the error section where page errors are displayed*/
+error{
+    height: 5%;
+    width: 100%;
+    overflow: scroll;
+}
+/*Style the logo section where page logos are displayed*/
+logo{
+    width: 15%;
+    align-items: center;
+}
+/*Style the logo image to fit into the logo area set for the page*/
+logo>img{
+    width: 150px;
+    height: 100px;
+    margin-top: 20px;
+}
+/*Stle the account section where the login and register buttons are placed*/
+account{
+    display: inline-block;
+    width: 10%;
+    float: left;
+    padding: 0px 0px; 
+    line-height: 50px;
+    align-content: center;
+}
+/*Stle the services menu on the header section*/
+services{
+     width: 25%;
+}
+services>p{
+      font-size: 12px;
+      text-align: left;
+      padding: 0px;
+      margin: 0px;
+      color: #2f3036;
+}
+services >ul{
+    list-style-type: square;
+    margin-top: 0px;
+    position: inherit;
+    font-size: 14px;
+    color: black;
+}
+
+service>name{
+    display: block;
+    font-size: 1.27em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+/*Stle the definers menu on the header section*/
+definers{
+     width:55%;
+}
+/*Strip the ul of padding and list styling*/
+#definer-list{
+    margin:25px;
+    padding:1px;
+    font-size: 14px;
+    display: block;
+}
+/*Create a horizontal list with spacing*/
+.definer>li {
+    display:inline-block;
+    float: left;
+    border: solid 1px;
+    margin: 2px;
+}
+/*Style for menu links*/
+.definer> li>a {
+    display:inline-block;
+    min-width:140px;
+    height: 40px;
+    text-align: center;
+    line-height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    background: black;
+    text-decoration: none;
+    font-weight: bold;
+   }
+/*Hover state for top level links*/
+.definer> li:hover a {
+    background: #19c589;
+}
+.definer> li:first-child a {
+  border-radius:5px 0 0 5px;
+}
+/*Style the form on the normal page*/
+form{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+/*Style the form on the normal page*/
+fieldset{
+    width: 200px;
+}
+/*Style the page navigator on the normal page*/
+navigator{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+}
+navigator>button{
+    width: auto;
+    height: 20px;
+}
+/*Style year select option for search criteria*/
+#year{
+    width: 60px;
+}
+/*Style month select option for search criteria*/
+#month{
+    width: 60px;
+}
+/*Style the article section that contains all the record*/
+article{
+    height:70%;
+    width:100%;
+    background-color: #aff4f4;
+    overflow: scroll; 
+}
+/*Style the record of the page*/
+record{
+    display: block;
+    width:100%;
+    text-align: center;
+    padding: 25px;
+    margin-bottom: 100px;
+}
+/*Style the tagline and center its content*/
+record>tagline{
+    display: block;
+    align-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left:50px;
+    margin-right:5000px;
+    width: 90%;
+    margin-top: 50px;
+}
+/*Style the tagline img and set width and height*/
+record>tagline>img {
+   width: 100px;
+   height: 100px;
+   margin: 0 auto;
+}
+
+/*Style the content inside a given record*/
+record>content{
+    font-size: 15px;
+    text-align: justify;
+    line-height: 2;
+    width: 90%;
+    margin-left:50px;
+    display: block;
+    float: left;
+    justify-content: flex-start;
+    background-color: beige;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+         column-count: 2;
+         column-gap: 3em;
+}
+/*Style the list items of the content in a given record*/
+record>content>ul>li{
+    font-weight: bold;
+}
+/*Style the main image of the content in a given record*/
+record>content>div>img{
+    width: auto;
+    height: 400px;
+}
+/*Style the article section that contains the record*/
+service{
+    display: block;
+    height: auto;
+    width: 90%;
+}
+/*Style the content of the service section*/
+service>content{
+    font-size: 15px;
+    width: 100%;
+    text-align: justify;
+    line-height: 2;
+    margin-left:50px;
+    display: block;
+    float: left;
+    justify-content: flex-start;
+    background-color: beige;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+         column-count: 2;
+         column-gap: 3em;
+}
+/*Style the images of the service section*/
+service>div>img{
+    width: 100px;
+    height: 100px;
+}
+/*Style the load element that contains the menu items*/
+load{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    width: 90%;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+load>div>img{
+    width: 150px;
+    height: 100px;
+}
+/*Style the captions. The are what make up the definers*/
+caption_{
+    /*display:block;*/
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size:medium;
+    border: solid 1px;
+    float: left;
+    padding: 10px 0;
+    background-color: beige;
+}
+/*Add a prefix Our to the caption*/
+caption_:before{
+    content: "Mutall";
+}
+/*Style the images contained in the record div*/
+record>div>img{
+    width: auto;
+    height: 400px;
+}
+/* Style the children of the record selected for editing */
+record>children{
+    display: block;
+    width: 100%;
+    height: 350px;
+    overflow: scroll;
+    background-color: white;
+}
+/*Style the menu icon for the page*/
+.icon{
+      display: none;      
+  }
+.icon>img{
+      width: 40px;
+      height: 30px;
+  }
+
+/*Style the menu icon images*/
+.icon{
+      display: none;      
+  }
+  .icon>img{
+      width: 40px;
+      height: 30px;
+  }
+/*Style the containers containing the social media platforms*/
+record>container{
+    width: 50%;
+    height: 500px;
+}
+/*Style the contact area of the page*/
+.funds_flex{
+    display: flex;
+    flex-direction: row;
+}
+.contactflex{
+    width: 700px;
+    height: 450px;
+}
+.contactflex1 {
+  line-height: 2;
+  font-weight: normal;
+  font-size: 15px;
+  text-align: justify;
+  list-style-type: none;
+  width: 30%;
+  margin: 0 auto;
+}
+.contactflex2 {
+  line-height: 1.5;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: center;
+  list-style-type: none;
+  width: 5%;
+}
+/*Style the image inside the contact flex*/
+.contactflex2>li>img {
+    width: 50px;
+    height: 50px;
+}
+
+
 /*
 Do not display the labels*/
 label.normal {
@@ -11,61 +347,133 @@ img
     width:150px; height:150px;
 }
 
-header
-{
-    height:15%;
-    background-color: yellow;
-    display:flex
-}
-
-footer
-{
-    height:0%;
-    background-color: greenyellow;
-}
-
-article
-{
-    height:85%;
-    width:80%;
-    background-color:powderblue;
-    overflow:scroll; 
-}
-
-
-nav
-{
-    height:85%;
-    width:20%;
-    background-color:bisque;
-    float: left;
-}
-
-
-record{
+/*Media querries for the menu*/
+@media only screen and (min-width: 320px) and (max-width: 900px) {
+    .definer> li:not(:first-child) {display: none;}
+    .definer> a.icon {
+    float: right;
     display: block;
-    width:100%
-}
-
-records{
+  }
+  .definer.responsive{position: relative;}
+  .definer.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .definer.responsive li {
+    float: none;
     display: block;
-}
-
-/*
-Rotate the staff picures by 90deg anti-clockwise*/
-#pic{
-    transform:rotate(-90deg);
-}
-
-caption_{
-    display:block;
+    text-align: left;
+    background: black;
     text-align: center;
-    text-decoration: underline;
-    font-weight: bold;
-    font-size:x-large;
+    font-weight: bolder;
+  }
 }
-
-tagline{
-    font-size:small;
-    
+@media only screen and (min-width: 320px) and (max-width: 900px){
+     header{
+       width: 100%;
+       height: 25%
+    }
+    article{
+        height:75%;
+        width:100%;
+        background-color: #aff4f4;
+        overflow: scroll; 
+   }
+    logo{
+        display: none;
+    }
+    account{
+        width: 10%;
+        margin-right: 10px;
+        line-height: 5px;
+        display: none;
+    }
+    .definers{
+        width:40%;
+    }
+    /*Style for menu links*/
+    .definer> li>a {
+        display:inline-block;
+        min-width:100px;
+        height: 30px;
+        text-align: center;
+        font-weight: bold;
+       }
+   service {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    width: 90%;
+    }
+    services{
+        width: 50%;
+        overflow: scroll;
+    }
+    services >p{
+      font-size: 12px;
+      text-align: left;
+      color: #2f3036;
+    }
+    services>ul{
+        width: 50%;
+        font-size: 14px;
+        list-style-type: square;
+        line-height: 20px;
+    }
+    record {
+        display: block;
+        width:100%;
+    }
+    record>content {
+    font-size: 15px;
+    text-align: justify;
+    line-height: 2;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: block;
+    float: left;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-bottom: 20px;
+        -webkit-column-count: 1;
+    -moz-column-count: 0;
+     column-count: 1; 
+     column-gap: 0em;
+    }
+    service>content {
+        font-size: 15px;
+        text-align: justify;
+        line-height: 2;
+        margin-left: 50px;
+        margin-right: 50px;
+        float: left;
+        justify-content: flex-start;
+        margin-bottom: 30px;
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+        column-gap: 0em;
+    }
+    .contactflex1 {
+        line-height: 2;
+        font-weight: normal;
+        font-size: 15px;
+        text-align: justify;
+        list-style-type: none;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .contactflex {
+        width: 100%;
+        height: 450px;
+    }
+    .contactflex2 {
+        line-height: 1.5;
+        font-weight: normal;
+        font-size: 16px;
+        text-align: center;
+        list-style-type: none;
+        width: 100%;
+    }
 }

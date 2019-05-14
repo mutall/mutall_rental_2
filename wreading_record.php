@@ -22,7 +22,7 @@ $wreading_record = new wreading_record();
         <link id="wreading_record.css" rel="stylesheet" type="text/css" href="wreading_record.css"/>
         
         <!-- Include the Services Javascript library and all her ancestors-->
-        <script id='mutall.js' src="../library/mutall.js"></script>
+        <script id='library.js' src="../library/library.js"></script>
         
         <!--Use the local services (before sharing them)-->
         <script id='services.js' src="mutall_rental.js"></script>

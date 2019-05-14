@@ -1,6 +1,12 @@
 <?php
 
-require_once '../library/mutall.php';
+require_once '../library/library.php';
+//
+//The library of core mutall PHP classes
+//Start a mutall session if not yet strated
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 //The meutall rental website
 class mutall_rental extends page_home {
@@ -116,13 +122,16 @@ class mutall_rental extends page_home {
 }
 
 //
-//The water field extends the Buis field by:-
+//The water field extends the Buis (driver) field by:-
 //(a)adding a water wreading property 
 //(b)overriding the __toString() function so that it retuns the value string 
 //property rather than the sql xvalue property
 //(c) addding a set value property; this is not defined for field, thus making
 //it abstract
-abstract class field_water extends field {
+//
+//(Note that a single field is the smallest (page) driver; then a driver_record; then a 
+//driver sql, etc)
+abstract class field_water extends driver_field {
 
     //
     //This need to be protected to avoild recursion (because field_water is 
@@ -189,12 +198,10 @@ class column_water extends field_water {
 }
 
 class wmeter_column extends column_water {
-
     //
     //The primary key id of the water meter column will ned to be exported 
     //to javascript environment; the setting is done on set_value()
     public $primarykey;
-
     //
     //Initialize the inherited water colum
     function __construct(wreading_record $wreading) {
@@ -472,7 +479,7 @@ class wreading extends page_records {
                 wmeter ON wmeter.wmeter = wreading.wmeter
         ");
         //
-        return new sql($dbase, $report);
+        return new driver_sql($dbase, $report);
     }
 
 }
@@ -1698,10 +1705,9 @@ class column_choices extends column{
     }
     
     //Dispolay the value of a selection
-    function display_value(page $page, mode $mode, driver_record $parent){
+    function display_value(page $page, mode $mode, driver_record $parent){//column_choices
         //
         $fname = $this->name;
-       
         //
         //Check the type of input
         if (!empty($this->metadata->type)){
