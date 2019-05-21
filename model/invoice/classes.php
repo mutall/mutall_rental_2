@@ -1,9 +1,13 @@
 <?php
 namespace invoice;
 
+//Item classes specific to this model's invoice subsystem
 require_once "model/invoice/items/electricity.php";
 require_once "model/invoice/items/rent.php";
 require_once "model/invoice/items/water.php";
+
+//Elecricity based classes
+require_once "model/invoice/electricity.php";
 
 //Modelling mutall_rental_database on the local server
 class dbase_local_mutall_rental extends dbase {
@@ -337,10 +341,8 @@ class layout_mutall extends layout_label {
             . "Your account is in arrears of Ksh "
             . number_format($a)
             . " which is close to $fx times the rental amount of Ksh $r. "
-            . "Please regularise it. This is the last request before we start "
-            . "instituting measures to recover the current outstanding balance of "
-            . number_format($this->record->items['closing_balance']->statements['summary']->results[0][0])
-            . ".</p>";
+            . "Please regularise it."
+            . "</p>";
         }
         //
         //Get the client code for announcement purposes
