@@ -75,7 +75,11 @@ By default, fields are paragramgs; show then inline*/
     text-align: right;
 }
 
-.name{
+section>p.name{
+   text-align:center;
+}
+
+section p.name{
    font-size:large;
 }
 
@@ -87,6 +91,10 @@ section{
 #logo{
     display:flex;
 }
-.banner{
-    
+
+
+section>table{
+    margin-left:auto; 
+    margin-right:auto;
+    font-size:large;
 }

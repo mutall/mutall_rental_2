@@ -15,7 +15,7 @@ class item_water extends item_binary{
         //
         //Service charge is not an aesthetic item because it is used for computng
         //closing balances
-        parent::__construct($record, "wconnection", "water");
+        parent::__construct($record, "wconnection", "water", "Water Consumption");
     }
     
     
@@ -54,9 +54,6 @@ class item_water extends item_binary{
                 //
                 //The most recent psoted is the previous date...
                 ."prev.date as prev_date, "
-                //
-                //Which formula was used for calculating fate of previous reading?
-                ."prev.formula, "
                 //
                 //..and its associated value is the previous reading
                 ."prev.value as prev_value, "

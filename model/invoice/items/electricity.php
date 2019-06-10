@@ -43,7 +43,7 @@ class item_electricity extends item_binary{
     //
     public function __construct($record) {
         //
-        parent::__construct($record, "eaccount", "electricity");
+        parent::__construct($record, "eaccount", "electricity", "Electricity Charge");
    }
     
     //Let 'power' be a virtual entity that models the link between client and 

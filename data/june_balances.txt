@@ -1,0 +1,8 @@
+SELECT client.name, format(amount) FROM
+`closing_balance`
+inner join invoice on closing_balance.invoice=invoice.invoice 
+inner join client on invoice.client = client.client 
+inner join period on invoice.period = period.period
+WHERE
+period.year=2019
+and period.month=6

@@ -16,7 +16,7 @@ class item_rent extends item_binary {
     //
     public function __construct($record) {
         //
-        parent::__construct($record, "agreement", "rent");
+        parent::__construct($record, "agreement", "rent", "Rental Charge");
         //
         //Rent is paid in advance when it is due.
         $this->advance=true;
@@ -43,20 +43,33 @@ class item_rent extends item_binary {
         //Monthly clients have a payment factor is 1
         $factor = "if(client.quarterly,  $quarterly, 1)";
         //
-        //The date of agreement review is the review period, in years, added to the 
-        //start date
-        $review = "date_add(agreement.start_date, interval agreement.review year)";
+        //Compute the rental period; its same as current period for monthly 
+        //paying clients; otherwise it is the next 3 months, starting from 
+        //current month
         //
-        //An agreement is due for review if its revew date is greater than the
-        //current
-        $due_for_review = "$review>curdate()";
+        //Get the first day of the current period as a string
+        $firstday ="{$this->record->invoice->year}-{$this->record->invoice->month}-1"; 
         //
-        //A agreement contract normally expires after the agreed duration
-        $renewal = "date_add(agreement.start_date, interval agreement.duration year)";
+        //A local function to return the month name of the n'th month from the 
+        //first day of current period.
+        $month = function($n) use ($firstday){
+            //
+            //Get the date, $n months from the first day of of current period 
+            $date_str = "$firstday + $n month";
+            //
+            //Convert date string to a unix time object
+            $date = strtotime($date_str);
+            //
+            //Return the short month name of the 
+            return date("M", $date);
+        };
         //
-        //A reminder is set when the number of months remaining is less than 6.
-        //Assuming a month has 30 days, then
-        $due_for_renewal = "$renewal - curdate() < 6*30";
+        //Join the next 3 months        
+        $month3 = "{$month(0)}, {$month(1)}, {$month(2)}";                
+        //
+        //For quaterly clients if the quarter is due return the next 3 months;
+        //otherwise return the current one
+        $period = "if(client.quarterly and ($fall), '$month3', '{$month(0)}')";        
         //
         return $this->chk(
             "select "
@@ -72,23 +85,18 @@ class item_rent extends item_binary {
                 //The room number
                 ."room.uid as room_no, "
                 //
-                ."agreement.start_date, "
-                //
-                //The number of months remaining to the agreement's expirely
-                . "($review) as review_date, "
-                . "$due_for_review as due_for_review, " 
-                //
-                //Marker if within the last 6 month of expirely date, when a message
-                //to that effect will be sent to client
-                . "$renewal as agreement_end_date, "
-                //
-               // . "$due_for_renewal as reminder," 
-                //
                 //The rental amount as agreened in the contract.
                 . "agreement.amount as price, " 
                 //
-                //The factor for converting monthly rent to the billed amount
-                . "$factor as factor, "
+                //The computation factor is neeed
+                ."$factor as factor, "
+                //    
+                //Show teh agreement start date
+                ."agreement.start_date as agreement_start_date, "
+                // 
+                //The rental period: same as current period for monttly clients, 
+                //else the next 3 months, starting from current month
+                . "$period as rental_period, "
                 //
                 //The rental amount payable for the current invoice period
                 . "agreement.amount * ($factor) as amount "
@@ -182,8 +190,9 @@ class item_rent extends item_binary {
             "select "
                 ."room.uid as room_no, "
                 . "room.title as room_name, "
-                . "agreement_end_date, "
                 . "agreement.amount as price, "
+                . "rental_period, "
+                ."agreement.start_date as agreement_start_date, "
                 . "rent.factor, "
                 . "rent.amount "
             . "from "
@@ -219,7 +228,7 @@ class item_rent extends item_binary {
                 //
                 //Specify the message field names. 
                 //.$this->select->messages->names
-                ."room_no, price, agreement_end_date, "
+                ."room_no, price, rental_period, "
                 . "factor, amount, "
                 //
                 //Specify all the rent identifier names
@@ -233,8 +242,8 @@ class item_rent extends item_binary {
                 //The poster fields to match the desired messages supply the data.
                 //The comma will be ignored if there are no message datas 
                 //. $this->messages->data
-                ."room_no, price, agreement_end_date, "
-                . "factor, amount, "
+                ."room_no, price, rental_period, "
+                . "factor, poster.amount, "
                 //
                 //List the data soureces of all the storage identifiers, except invoice
                 //These must all be supplied by the poster.
@@ -244,7 +253,7 @@ class item_rent extends item_binary {
                 //The (current) invoice primary key is needed by all storage
                 //tables
                 . "invoice.invoice "
-             . "from "
+            . "from "
                  //Data come from this items's poster sql, with the following 
                  //conditions:-
                  //
@@ -266,17 +275,21 @@ class item_rent extends item_binary {
                     //one of the reasons why client must be a poster field. The
                     //other reason has do to with summarizing closing balance
                     . "invoice.client = poster.client "
+                    //
+                    //Bring in the agreement to support the order by clause (and we
+                    //don't want to show it n the report)
+                   ."inner join agreement on agreement.agreement=poster.agreement "                   
                 //
-                //Order the inesrted dtada by agreement end date, so that the 
-                //earliest agrrement is use s the basis for computing distress
+                //Order the inserted data by the agreement start date, so that the 
+                //earliest agreement is used as the basis for computing distress
                 //conditions         
-                . "order by poster.agreement_end_date "
-                . ") "
+                . "order by agreement.start_date "
+            . ") "
             . "on duplicate key update "
-                    . "room_no=values(room_no), "
-                    . "price=values(price), "
-                    . "agreement_end_date=values(agreement_end_date), "
-                    . "factor=values(factor)"     
+                . "room_no=values(room_no), "
+                . "price=values(price), "
+                . "rental_period=values(rental_period), "
+                . "factor=values(factor)"     
         );        
     }
     

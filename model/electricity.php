@@ -561,7 +561,7 @@ class eaccount extends page{
     //Returns, to the server, all the eaccount numbers a json string
     function get_all_eaccounts(){
         //
-        //Select all teh eaccount numbers
+        //Select all the eaccount numbers
         $results = $this->dbase->query(
             "select "
                 . "name, num "
@@ -573,8 +573,8 @@ class eaccount extends page{
         
         $jsonstr = json_encode($y);
         //
-        //Return to the server, teh json string of all the account nos.
-        echo "<pre>$jsonstr</pre>";
+        //Return to the server, the json string of all the account nos.
+        echo $jsonstr;
         
     }
     

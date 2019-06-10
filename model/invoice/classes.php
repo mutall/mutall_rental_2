@@ -6,9 +6,6 @@ require_once "model/invoice/items/electricity.php";
 require_once "model/invoice/items/rent.php";
 require_once "model/invoice/items/water.php";
 
-//Elecricity based classes
-require_once "model/invoice/electricity.php";
-
 //Modelling mutall_rental_database on the local server
 class dbase_local_mutall_rental extends dbase {
 
@@ -119,7 +116,6 @@ class layout_mutall extends layout_label {
         //Use the invoice item to display the identification section of the
         //report
         echo "<section>";
-        echo "<p class='name'>Client Identification</p>";
         //
         //Let $ds be the detailed statement of an invoice item
         $ds = $this->record->items['invoice']->statements['detailed'];
@@ -161,27 +157,13 @@ class layout_mutall extends layout_label {
             .date("jS M Y"). "<br/>"
         ."</section>";
         //
-        //Show the type of this document: invoice or statement, as a complete 
-        //reference
-        //
-        //Let $ref be the reference to ths document
-        $ref = [];
-        //
-        //Test if there is any previus posting
-        if ($this->record->try_ref($ref)){
-            //
-            //There is. Report it
-            echo 
-            "<div>"
-            . "{$ref['type']}<p>REF: {$ref['code']}</p>"
-            . "</div>";
-        }else{
-            //There is none.Report the situation
-            echo 
-            "<div>"
-            . "No posted data found for this period"
-            . "</div>";
-        }
+        //Report the invoice reference number as the combination of the client
+        ///id, invoice period year and month 
+        echo 
+        "<div>"
+        . "INVOICE NO.: {$this->record->get_ref()}</p>"
+        . "</div>";
+        
     }
     
     //Use all the items of a record, other than invoice, to show the report 
@@ -241,7 +223,7 @@ class layout_mutall extends layout_label {
             //
             //Now show the data
             echo "<td>";
-                echo $item->name;
+                echo $item->title;
             echo "</td>";
             //
             //The values should be right aligned
@@ -262,7 +244,7 @@ class layout_mutall extends layout_label {
         //
         echo "<section>";
         //
-        echo "<name>Details</name>";
+        echo "<p class='name'>Details</p>";
         //
         //Step through all the items of a record and display each one of them.
         foreach ($this->record->items as $key => $item) {
