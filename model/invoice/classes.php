@@ -55,7 +55,13 @@ class poster_mutall extends poster{
         //
         //Construct the parent.
         parent::__construct();
-        }
+        //
+        //Add the cc's to teh emailer. This is where customization of an emailer 
+        //takes place
+        $this->emailer->AddCC('osoro.wycliff@gmail.com');
+        $this->emailer->AddCC('phyllis.pn@gmail.com');
+        //$this->AddCC('atienovivian35@gmail.com');
+    }
     
     //The databse used by mutall project
     function get_dbase() {
@@ -81,20 +87,6 @@ class poster_mutall extends poster{
         //
         //Display it
         $this->display_sql($sql);
-    }
-    
-}
-
-//Emaile for mutall rental
-class emailer_mutall extends emailer{
-    //
-    function __construct() {
-        parent::__construct();
-        //
-        //Add the cc's.
-        $this->AddCC('osoro.wycliff@gmail.com');
-        $this->AddCC('phyllis.pn@gmail.com');
-        $this->AddCC('atienovivian35@gmail.com');
     }
     
 }
