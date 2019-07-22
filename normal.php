@@ -19,6 +19,16 @@ $url_params = [];
 //
 //Set the class value.
 $url_params['class'] = $_REQUEST['class'];
+//Set the method
+$url_params['method'] = $_REQUEST['method'];
+//Set the layout
+$url_params['layout'] = $_REQUEST['layout'];
+//Set the level
+$url_params['level'] = $_REQUEST['level'];
+//Set the year
+//$url_params['year'] = $_REQUEST['year'];
+//Set the month
+//$url_params['month'] = $_REQUEST['month'];
 //
 //Now call the index process from the invoice namespace. Pass the home 
 //directory to the page
@@ -30,7 +40,11 @@ function check($name, $array) {
     }
 }
 
-;
+function select($name, $array) {
+    if (in_array($name, $array)) {
+        echo "selected";
+    }
+}
 ?>
 <html>
     <head>
@@ -231,86 +245,109 @@ function check($name, $array) {
 
         <!-- The non-scrolling part of this page contains the:- 
         - input area for specifying report criteria-->
-        <header>
-            <header_items>
-                <!--Search Invoices-->
-                <form id="search">
-                    <!-- Specify Class to be used-->
-                    <fieldset>
-                        <legend>Class</legend>
-                        Poster<input type="radio" name="class" value="poster_mutall" <?php check('poster_mutall', $url_params) ?>/>
-                        Report<input type="radio" name="class" value="report_mutall"  <?php check('report_mutall', $url_params) ?>/>
-                    </fieldset>
+    <header_items>
+        <!--Search Invoices-->
+        <form id="search">
+            <!-- Specify Class to be used-->
+            <fieldset>
+                <legend>Class</legend>
+                Poster
+                <input type="radio" name="class" 
+                    value="poster_mutall" 
+                    <?php check('poster_mutall', $url_params) ?>
+                    onchange="show_date()"
+                />
+                Report
+                <input type="radio" name="class" 
+                    value="report_mutall"  
+                    <?php check('report_mutall', $url_params) ?>
+                    onchange="show_date(false)"
+                />
+                <input 
+                    type ="date" 
+                    size="15"
+                    id="date_type"
+                    value="<?php echo date('Y-m-d'); ?>"
+                />
+            </fieldset>
 
-                    <!-- Specify method to be used-->
-                    <fieldset>
-                        <legend>Method</legend>
-                        <select name="method">
-                            <option value="display">Select Method</option>
-                            <option value="display">Display</option>
-                            <option value="email">Email</option>
-                            <option value="sms">SMS</option>
-                        </select>
-                    </fieldset>
+            <!-- Specify method to be used-->
+            <fieldset>
+                <legend>Method</legend>
+                <select name="method">
+                    <option value="display"<?php select('selector', $url_params) ?>>Select Method</option>
+                    <option value="display"<?php select('display', $url_params) ?>>Display</option>
+                    <option value="email"<?php select('email', $url_params) ?>>Email</option>
+                    <option value="sms"<?php select('sms', $url_params) ?>>SMS</option>
+                    <option value="post"<?php select('post', $url_params) ?>>Post</option>
+                    <option value="unpost"<?php select('unpost', $url_params) ?>>UnPost</option>
+                </select>
+            </fieldset>
 
-                    <!-- Specify Label to be used-->
-                    <fieldset>
-                        <legend>Layout</legend>
-                        Tabular<input type="radio" name="layout" value="layout_tabular" />
-                        Layout_Mutal<input type="radio" name="layout" value="layout_mutall"/>
-                    </fieldset>
+            <!-- Specify Label to be used-->
+            <fieldset id="layout">
+                <legend>Layout</legend>
+                Tabular
+                <input type="radio" name="layout" 
+                    value="layout_tabular" 
+                    <?php check('layout_tabular', $url_params) ?> 
+                />
+                Mutal
+                <input type="radio" name="layout" 
+                    value="layout_mutall"
+                    <?php check('layout_mutall', $url_params) ?>
+                />
+            </fieldset>
 
-                    <!-- Specify level to be used-->
-                    <fieldset>
-                        <legend>Level</legend>
-                        Detailed<input type="radio" name="level" value="detailed"/>
-                        Summary<input type="radio" name="level" value="summary" />
-                    </fieldset>
+            <!-- Specify level to be used-->
+            <fieldset>
+                <legend>Level</legend>
+                Detailed
+                <input type="radio" name="level" 
+                    value="detailed"
+                    <?php check('detailed', $url_params) ?>
+                />
+                Summary
+                    <input type="radio" name="level" 
+                    value="summary" 
+                    <?php check('summary', $url_params) ?>
+                />
+                
+            </fieldset>
 
-                    <!-- Specify the where clause of criteria-->
-                    <fieldset>
-                        <legend>Search Creteria</legend>
-                        <input 
-                            type ="text" 
-                            size="15"
-                            id="criteria"
-                            placeholder="Enter Search Criteria"
-                            />
-                        <select name="year" id="year">
-                            <option value="">Select Year</option>
-                        </select>
-                        <select name="month" id="month">
-                            <option value="">Select Month</option>
-                            <option value="0">Jan</option>
-                        </select>
-                        <br/>
-                        <input type="button" value="Search" onclick="get_record(this)"/>
-                        <input type="button" value="Print" onclick="print_record(this)">
-                    </fieldset>
-                </form>
-                <navigator>
-                    <fieldset>
-                        <legend>Post and Un-Post Results</legend>
-                        <input type="button" value="Post"/>
-                        <input type="button" value="Un-Post">
-                    </fieldset>
-                    <!--Navigate the page-->
-                    <!-- Specify the where clause of criteria-->
-                    <label>Find in Page
-                        <input 
-                            type ="text" 
-                            size="30"
-                            onkeyup="search_creteria(this.value)"
-                            />
-                    </label> 
+            <!-- Specify the where clause of criteria-->
+            <fieldset>
+                <legend>Search By</legend>
+                <input 
+                    type ="text" 
+                    size="15"
+                    id="criteria"
+                    placeholder="Client.name"
+                    />
+                <input type="button" value="Search" onclick="get_record(this)"/>
+                <input type="button" value="Print" onclick="print_record(this)">
+            </fieldset>
+        </form>
+        <navigator>
+            <!--Navigate the page-->
+            <!-- Specify the where clause of criteria-->
+            <label>Go to client
+                <input 
+                    type ="text" 
+                    size="30"
+                    onkeyup="search_creteria(this.value)"
+                    />
+            </label> 
 
-                    <!-- Add next and previous buttons to help with the navigation of 
-                    the invoices-->
-                    <button onclick="previous_record()">Previous</button>
-                    <button onclick="next_record()">Next</button>
-                </navigator>
-            </header_items>
-        </header>
+            <!-- Add next and previous buttons to help with the navigation of 
+            the invoices-->
+            <button onclick="previous_record()">Previous</button>
+            <button onclick="next_record()">Next</button>
+            <nbsp> To Update records click <a 
+                    href="http://mutall.co.ke/buis/page_buis.php?psync=true">
+                    HERE</a></nbsp>
+        </navigator>
+    </header_items>
     <fdata></fdata>
     <!-- Capture  the vertical and horizontal scrolls for managing the 
    synchronisation of the report's top, left and body panes-->
@@ -321,50 +358,7 @@ function check($name, $array) {
         $normal->display('layout_mutall', 'detailed', 'false');
         ?>
     </article>
-    <script>
-        //Set the year dropdown select option
-        for (y = 2000; y <= 2500; y++) {
-            var optn = document.createElement("OPTION");
-            optn.text = y;
-            optn.value = y;
-            // if year is 2015 selected
-            if (y === 2019) {
-                optn.selected = true;
-            }
 
-            document.getElementById('year').options.add(optn);
-        }
-    </script>
-    <script>
-        //Set the month drop down select option
-        var d = new Date();
-        var monthArray = new Array();
-        monthArray[0] = "1";
-        monthArray[1] = "2";
-        monthArray[2] = "3";
-        monthArray[3] = "4";
-        monthArray[4] = "5";
-        monthArray[5] = "6";
-        monthArray[6] = "7";
-        monthArray[7] = "8";
-        monthArray[8] = "9";
-        monthArray[9] = "10";
-        monthArray[10] = "11";
-        monthArray[11] = "12";
-        for (m = 0; m <= 11; m++) {
-            var optn = document.createElement("OPTION");
-            optn.text = monthArray[m];
-            // server side month start from one
-            optn.value = (m + 1);
-
-            // if january selected
-            if (m === 0) {
-                optn.selected = true;
-            }
-
-            document.getElementById('month').options.add(optn);
-        }
-    </script>
     <script>
 
         //
@@ -415,40 +409,23 @@ function check($name, $array) {
 
                 }
 
-                //Get the year and the month
-                var e = field.querySelectorAll('select');
-                if (e) {
-                    e.forEach(function (f) {
-                        //
-                        //Get the id.
-                        var id = f.getAttribute('id');
-                        //
-                        //Get the year
-                        if (id === 'year') {
-                            //first get the name
-                            var name = f.name;
-                            console.log(name);
-                            //
-                            //Get the value passed on the year field
-                            var text = f.options[f.selectedIndex].text;
-                            //
-                            //Set the name to the value of the retrieved text and append to form
-                            formData.append(name, text);
-                        }
-                        //
-                        //Get the month
-                        if (id === 'month') {
-                            //first get the name
-                            var name = f.name;
-                            console.log(name);
-                            //
-                            //Get the value passed on the year field
-                            var text = f.options[f.selectedIndex].text;
-                            //
-                            //Set the name to the value of the retrieved text and append to form
-                            formData.append(name, text);
-                        }
-                    });
+                //Get the year and the month by first getting the input field
+                var ym = document.querySelector('#date_type');
+                if (ym){
+                    //Create a new date object from the input element value
+                    var date = new Date(ym.value);
+                    //
+                    //Get the month from the created date
+                    var month = date.getMonth() + 1;
+                    //
+                    //Set the month
+                    formData.append('month', month);
+                    //
+                    //Get the year from the created date
+                    var year = date.getFullYear();
+                    //
+                    //Set the year
+                    formData.append('year', year);
                 }
                 //
                 //Get the value of the search criteria.
@@ -492,6 +469,9 @@ function check($name, $array) {
                     //
                     //Set the innerHtml to the responce.
                     article.innerHTML = this.responseText;
+                    
+                    
+                    console.log(this.responseText);
                     //
                     //Save to localstorage for access to other pages.
                     saveData(this.responseText);
@@ -505,15 +485,15 @@ function check($name, $array) {
             //get the form data response
             //
             //
-            //Open a new window
+            //Open a new window. The window will be used to print saved data from
+            //the form data. The data is pasted on the opened window
             var win = window.open("http://mutall.co.ke/development/mutall_rental/print.php",
                     "Print_Records", "resizable,scrollbars,status");
-            //
-            //Get the article section of this window
-
         }
+        //
+        //Save data from the form data section. It is the responsetext from the
+        //xmlHTMLRequest
         function saveData(data) {
-            console.log(data);
             var invoices = data;
             //converts to JSON string the Object
             invoices = JSON.stringify(invoices);
@@ -521,6 +501,21 @@ function check($name, $array) {
             invoices = btoa(invoices);
             //save the encoded accout to web storage
             localStorage.setItem('_invoices', invoices);
+        }
+        function show_date(date=true){
+            //
+            //Get the date field using its id
+            var elem = document.querySelector('#date_type');
+            //
+            //Hide date if poster is false
+            if(!date){
+                //
+                //Set the date display attribute to hidden
+                elem.setAttribute('hidden', 'true');
+            }
+            else{
+                elem.removeAttribute('hidden');
+            }
         }
     </script>
 
