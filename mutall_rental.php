@@ -198,10 +198,12 @@ class column_water extends field_water {
 }
 
 class wmeter_column extends column_water {
+
     //
     //The primary key id of the water meter column will ned to be exported 
     //to javascript environment; the setting is done on set_value()
     public $primarykey;
+
     //
     //Initialize the inherited water colum
     function __construct(wreading_record $wreading) {

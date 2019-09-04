@@ -43,7 +43,7 @@ function wreading(input) {
 function wreading_record(input) {
     //
     //Debugging
-    //console.log(input);
+    console.log(input);
     //
     page.call(this, input);
     //

@@ -90,10 +90,7 @@ class item_rent extends item_binary {
                 //
                 //The computation factor is neeed
                 ."$factor as factor, "
-                //    
-                //Show teh agreement start date
-                ."agreement.start_date as agreement_start_date, "
-                // 
+                //
                 //The rental period: same as current period for monttly clients, 
                 //else the next 3 months, starting from current month
                 . "$period as rental_period, "
@@ -192,7 +189,6 @@ class item_rent extends item_binary {
                 . "room.title as room_name, "
                 . "agreement.amount as price, "
                 . "rental_period, "
-                ."agreement.start_date as agreement_start_date, "
                 . "rent.factor, "
                 . "rent.amount "
             . "from "

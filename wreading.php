@@ -12,7 +12,7 @@ $wreading= new wreading();
 <html>
 
     <head>
-        <title>Records</title>
+        <title>Records></title>
         
         <!-- Make the page phone sensitive -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
