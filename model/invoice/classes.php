@@ -240,9 +240,10 @@ class layout_mutall extends layout_label {
         //
         //Step through all the items of a record and display each one of them.
         foreach ($this->record->items as $key => $item) {
-            //
+           //
             //Exclude the invoice.
             if ($key !== 'invoice') {
+                
                 //
                 //Show the item's data -- depnding on the number of records and
                 //fields
