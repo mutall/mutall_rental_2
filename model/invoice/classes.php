@@ -5,6 +5,7 @@ namespace invoice;
 require_once "model/invoice/items/electricity.php";
 require_once "model/invoice/items/rent.php";
 require_once "model/invoice/items/water.php";
+require_once "model/invoice/items/loan.php";
 
 //Modelling mutall_rental_database on the local server
 class dbase_local_mutall_rental extends dbase {
@@ -12,8 +13,8 @@ class dbase_local_mutall_rental extends dbase {
     //
     public function __construct() {
         //
-        $username = "mutallco";
-        $password = "mutall_2015";
+        $username = "root";
+        $password = "";
         //
         //Use the latest version 
         $dbname = "mutallco_rental";
@@ -357,7 +358,8 @@ class record_mutall extends record{
         return [ 
             'rent' => new item_rent($this),
             'water' => new item_water($this),
-            'electricity' => new item_electricity($this)
+            'electricity' => new item_electricity($this),
+            'loan' => new item_loan($this)
         ];
     }                
 

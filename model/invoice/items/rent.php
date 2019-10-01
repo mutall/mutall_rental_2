@@ -130,7 +130,7 @@ class item_rent extends item_binary {
                 //
                 //Add the rent postage constraint, if requested. If requested, 
                 //the postage constraint allows us to see only those cases that 
-                //have not been posted. This is teh aces when  there is no rent 
+                //have not been posted. This is teh case when  there is no rent 
                 //object that points to the driving agreement for this period         
                 . "and " . ($postage ? "rent.agreement is null " : "true ")
                 //

@@ -280,6 +280,7 @@ function select($name, $array) {
                     <option value="email"<?php select('email', $url_params) ?>>Email</option>
                     <option value="sms"<?php select('sms', $url_params) ?>>SMS</option>
                     <option value="post"<?php select('post', $url_params) ?>>Post</option>
+                    <option value="unpost"<?php select('unpost', $url_params) ?>>UnPost</option>
                 </select>
             </fieldset>
 
