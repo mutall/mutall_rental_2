@@ -59,7 +59,7 @@ class poster_mutall extends poster{
         //
         //Add the cc's to teh emailer. This is where customization of an emailer 
         //takes place
-        $this->emailer->AddCC('osoro.wycliff@gmail.com');
+        //$this->emailer->AddCC('osoro.wycliff@gmail.com');
         $this->emailer->AddCC('phyllis.pn@gmail.com');
         //$this->AddCC('atienovivian35@gmail.com');
     }
