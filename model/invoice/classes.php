@@ -146,7 +146,7 @@ class layout_mutall extends layout_label {
             . "P.O. Box 374<br/>"
             . "Kiserian - 00206 <br/>"
             . "email: mutallcompany@gmail.com<br/>"
-            . "contact:Wycliffe on 0727 203 769<br/><br/>"
+            . "contact:Camilus on 0717 312 320<br/><br/>"
             .date("jS M Y"). "<br/>"
         ."</section>";
         //
