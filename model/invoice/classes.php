@@ -13,8 +13,8 @@ class dbase_local_mutall_rental extends dbase {
     //
     public function __construct() {
         //
-        $username = "mutallco";
-        $password = "mutall_techub";
+        $username = "root";
+        $password = "";
         //
         //Use the latest version 
         $dbname = "mutallco_rental";
