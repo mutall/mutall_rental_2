@@ -136,6 +136,9 @@ class item_rent extends item_binary {
                 //
                 //Please respect the agreement termination date.
                 ." and agreement.terminated is null "
+                //
+                //Exclude future contracts
+                ." and agreement.start_date<={$this->cutoff()} "              
             //
             //order by date of agreement so that the earliest agreement comes
             //to fore, for use in computing distress condition. Use the bigger 

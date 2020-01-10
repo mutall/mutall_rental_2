@@ -54,10 +54,13 @@ class item_electricity extends item_binary{
         $terminated = 
             "agreement.terminated is not null "
             . "and agreement.terminated <'{$this->record->invoice->cutoff()}'";
+            
+        //An agrrement is futristic if the stating date is greate then the cuoff
+        $futuristic = "agreement.start_date>'{$this->record->invoice->cutoff()}'";    
         //
         //An agreement is is valid when it is not terminated and it is marked
         //as valid (which by default it is)
-        $valid_agreement = " not ($terminated) and agreement.valid";
+        $valid_agreement = " not ($terminated) and agreement.valid and not ($futuristic)";
         //        
         //
         return $this->chk(
