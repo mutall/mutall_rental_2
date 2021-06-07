@@ -269,6 +269,7 @@ class item_electricity extends item_binary{
                 //Report acccount an meter details
                 ."eaccount.num as eaccount_no, "
                 ."emeter.num as emeter_no, "
+                . "emeter.new_num as new_emeter_no, "
                 //
                 //Amount to pay Kenya power for the the account
                 ."ebill.current_amount as payable_to_kplc, "
