@@ -324,8 +324,10 @@ class layout_mutall extends layout_label {
         //Get the client code for announcement purposes
         $code = $this->record->items['invoice']->statements['detailed']->results['0']['id'];
         //
-        echo 
-        "Make all cheques payable to Mutall Investments Co. Ltd<br/>"
+        echo
+        "NB: Kindly note that you have been assigned a new meter number after "
+        . "replacing old meters with digital meters <br.>"
+        . "Make all cheques payable to Mutall Investments Co. Ltd<br/>"
         . "<br/>"
         . "Coop Bank-Kiserian<br/>"
         . "A/c No: 011 485 839 41800<br/>"
