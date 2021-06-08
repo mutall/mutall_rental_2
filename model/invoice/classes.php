@@ -326,7 +326,8 @@ class layout_mutall extends layout_label {
         //
         echo
         "NB: Kindly note that you have been assigned a new meter number after "
-        . "replacing old meters with digital meters <br.>"
+        . "replacing old meters with digital meters <br/>"
+        . "<br/>"
         . "Make all cheques payable to Mutall Investments Co. Ltd<br/>"
         . "<br/>"
         . "Coop Bank-Kiserian<br/>"
